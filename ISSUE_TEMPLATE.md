@@ -1,2 +1,2 @@
-# New issue
-ISSUE_TEMPLATE.md です。
+# 掲示板内容
+ここに修正箇所を入力する
