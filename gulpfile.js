@@ -1,21 +1,28 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browser = require("browser-sync");
-var ssi = require("browsersync-ssi");
-var plumber = require("gulp-plumber");
-var sourcemaps = require("gulp-sourcemaps");
-var autoprefixer = require("gulp-autoprefixer");
-var spritesmith = require("gulp.spritesmith");
-var notify = require("gulp-notify");
-var convertEncoding = require("gulp-convert-encoding");
-var replace = require('gulp-replace');
+var requireDir = require('require-dir');
+requireDir('./gulp/tasks', {recurse:true});
 
 
-gulp.task("default", ["sprite", "sass", "server"], function(){
+//const config = require('./script/config');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const sassGlob = require("gulp-sass-glob");
+const browser = require("browser-sync");
+const ssi = require("browsersync-ssi");
+const plumber = require("gulp-plumber");
+const sourcemaps = require("gulp-sourcemaps");
+const autoprefixer = require("gulp-autoprefixer");
+const spritesmith = require("gulp.spritesmith");
+const notify = require("gulp-notify");
+const convertEncoding = require("gulp-convert-encoding");
+const replace = require('gulp-replace');
+const ejs = require('ejs');
+
+gulp.task("default", ["sprite" , "html", "sass", "server"], function(){
 //	gulp.watch(["html/**/*.html", "html/common/inc/*.txt"], browser.reload);
-//	gulp.watch(["html/*.html"], browser.reload);
+	gulp.watch(["pc/dest/*.html"], browser.reload);
 //	gulp.watch(".dev/img/sprite-images/*", ["sprite"]);
-//	gulp.watch(".dev/scss/*.scss", ["sass"]);
+	gulp.watch("pc/_dev/scss/*.scss", ["sass"]);
+	gulp.watch("pc/_dev/scss/*/*.scss", ["sass"]);
 //	gulp.watch("html/_dev/js/uncompressed/**/*.js", ["js"]);
 });
 
@@ -30,7 +37,7 @@ gulp.task("sprite", function(){
 	var spriteData = gulp.src("pc/_dev/img/sprite-images/test/*").pipe(spritesmith({
 		imgName: "sprite.png",
 		cssName: "_sprite.scss",
-		imgPath: "pc/html/common/img/sprite.png",
+		imgPath: "pc/dest/common/img/sprite.png",
 		cssFormat: "scss",
 		padding: 4,
 		algorithm: 'binary-tree',
@@ -42,14 +49,22 @@ gulp.task("sprite", function(){
 	spriteData.css.pipe(gulp.dest("pc/_dev/scss"));
 });
 
+// html
+gulp.task('html', function () {
+  gulp.src('pc/_dev/html/*.html')
+    .pipe(gulp.dest('pc/dest/'));
+});
+
+// sass
 gulp.task('sass', function () {
   gulp.src('pc/_dev/scss/*.scss')
+	.pipe(sassGlob())
 	.pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
 	.pipe(sourcemaps.init())
 	.pipe(sass({ outputStyle: "expanded" })) //outputStyle: "compressed" にすると圧縮
 	.pipe(autoprefixer())
 	.pipe(sourcemaps.write(""))
-    .pipe(gulp.dest('pc/html/common/css'))
+    .pipe(gulp.dest('pc/dest/common/css'))
 	.pipe(browser.stream());
 });
 
@@ -58,8 +73,8 @@ gulp.task("server", function(){
 	browser({
 		ghostMode: false,
 		server: {
-			baseDir: "pc/html",
-			middleware: [ ssi({ baseDir: "pc/html", ext: ".html" }) ]
+			baseDir: "pc/dest",
+			middleware: [ ssi({ baseDir: "pc/dest", ext: ".html" }) ]
 		}
 	});
 });
@@ -77,7 +92,7 @@ gulp.task("convertEncoding", function(){
 		.pipe(convertEncoding({to: "shift_jis"}))
 		.pipe(gulp.dest("pc-SJIS/css"));
 
-	gulp.src("pc/lib/js/*.js")
+	gulp.src("pc/js/*.js")
 		.pipe(convertEncoding({to: "shift_jis"}))
 		.pipe(gulp.dest("pc-SJIS/lib/js"));
 	return

@@ -18,6 +18,7 @@
     "autoprefixer": "^7.1.4",
     "browser-sync": "^2.18.13",
     "browsersync-ssi": "^0.2.4",
+    "ejs": "^2.5.7",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-convert-encoding": "^1.0.0",
@@ -27,8 +28,10 @@
     "gulp-plumber": "^1.1.0",
     "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.1.0",
+    "gulp-sass-glob": "^1.0.8",
     "gulp-watch": "^4.3.11",
     "gulp.spritesmith": "^6.5.1",
-    "http-server": "^0.10.0"
+    "http-server": "^0.10.0",
+    "require-dir": "^0.3.2"
   }
 }

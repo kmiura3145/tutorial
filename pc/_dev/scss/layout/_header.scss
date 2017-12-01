@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#header {
+    @include inner;
+    
+    background-color: $color_keyColor;
+    color: $color_white;
+    
+    p:first-child {
+        margin-top: 0;
+    }
+}
