@@ -17,9 +17,10 @@ const convertEncoding = require("gulp-convert-encoding");
 const replace = require('gulp-replace');
 const ejs = require('ejs');
 
-gulp.task("default", ["sprite" , "html", "sass", "server"], function(){
+gulp.task("default", ["sprite" , "html", "sass", "js", "server"], function(){
 //	gulp.watch(["html/**/*.html", "html/common/inc/*.txt"], browser.reload);
-	gulp.watch(["pc/dest/*.html"], browser.reload);
+	gulp.watch(["pc/_dev/html/*.html"], browser.reload);
+	gulp.watch(["pc/_dev/html/*.html"], ["html"]);
 //	gulp.watch(".dev/img/sprite-images/*", ["sprite"]);
 	gulp.watch("pc/_dev/scss/*.scss", ["sass"]);
 	gulp.watch("pc/_dev/scss/*/*.scss", ["sass"]);
@@ -28,8 +29,7 @@ gulp.task("default", ["sprite" , "html", "sass", "server"], function(){
 
 // pc使用
 gulp.task("pc", ["sass", "server" ], function(){
-	gulp.watch(["pc/**/*.html"], browser.reload);
-	gulp.watch(["pc/*.html"], browser.reload);
+	gulp.watch(["pc/_dev/html/*.html"], browser.reload);
 	gulp.watch("pc/**/*.scss", ["sass"]);
 });
 
@@ -67,6 +67,13 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('pc/dest/common/css'))
 	.pipe(browser.stream());
 });
+
+// html
+gulp.task('js', function () {
+  gulp.src('pc/_dev/js/*.js')
+    .pipe(gulp.dest('pc/dest/common/js'));
+});
+
 
 // server 立ち上げ
 gulp.task("server", function(){

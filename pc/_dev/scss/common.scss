@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-/*リセット*/
-@import "_base";
-
 /*setting*/
 @import "_setting";
+
+/*リセット*/
+@import "_base";
 
 /*layout*/
 @import "layout/**";

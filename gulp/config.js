@@ -9,6 +9,6 @@ module.exports = {
 	release: release,
 	sass: {
 		src: src + '/css/**/*.scss',
-		dest: dest + '/css'
+		dest: dest + '/css' 
 	},
 };

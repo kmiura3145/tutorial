@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#header {
+.header {
     @include inner;
     
     background-color: $color_keyColor;

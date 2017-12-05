@@ -1,18 +1,8 @@
 @charset "UTF-8";
 
-.l-container{
-  overflow: hidden;
-  max-width: $max_pc;
-  margin: 0 auto;
-  &.u-fixed{
-    right: 0;
-    left: 0;
-  }
-}
-
 @mixin inner {
     &--inner {
-        max-width: 960px;
+        max-width: $max_pc;
         margin: 0 auto;
     }
 }

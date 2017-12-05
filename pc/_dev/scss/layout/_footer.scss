@@ -1,2 +1,9 @@
 @charset "UTF-8";
 
+.footer {
+    @include inner;
+    
+    p:first-child {
+        margin-top: 0;
+    }
+}
