@@ -5,6 +5,9 @@
     
     background-color: $color_keyColor;
     color: $color_white;
+    border: 1px solid #333 {
+        top: 0;
+    }
     
     p:first-child {
         margin-top: 0;
