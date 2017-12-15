@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
-@mixin inner {
-    &--inner {
-        max-width: $max_pc;
-        margin: 0 auto;
-    }
+.container {
+    @include inner;
+    
 }
+

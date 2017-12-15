@@ -298,36 +298,53 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
 }
 
-/* ページ全体
------------------------------------------------------------------ */
-.wrapper {
-  margin: 0 auto;
-  position: relative;
+/*mixin*/
+.mt_5 {
+  margin-top: 5px;
 }
 
-/* 本文エリア
------------------------------------------------------------------ */
-.container {
-  position: relative;
-  padding: 0 12px 12px;
-  background-color: #ebebeb;
-  -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.08);
-          box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.08);
+.mb_5 {
+  margin-top: 5px;
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 3px;
-  -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.08);
-          box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.08);
+.mt_10 {
+  margin-top: 10px;
+}
+
+.mb_10 {
+  margin-top: 10px;
+}
+
+.mt_15 {
+  margin-top: 15px;
+}
+
+.mb_15 {
+  margin-top: 15px;
+}
+
+.mt_20 {
+  margin-top: 20px;
+}
+
+.mb_20 {
+  margin-top: 20px;
+}
+
+.mt_25 {
+  margin-top: 25px;
+}
+
+.mb_25 {
+  margin-top: 25px;
 }
 
 /*layout*/
+.container--inner {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
 .footer--inner {
   max-width: 950px;
   margin: 0 auto;
@@ -337,13 +354,6 @@ a {
   margin-top: 0;
 }
 
-.header {
-  background-color: #00aaeb;
-  color: #fff;
-  border: 1px solid #333;
-  border-top: 0;
-}
-
 .header--inner {
   max-width: 950px;
   margin: 0 auto;
@@ -351,6 +361,55 @@ a {
 
 .header p:first-child {
   margin-top: 0;
+}
+
+.menu {
+  background-color: #00aaeb;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.menu--inner {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.menu ul {
+  margin-top: 0;
+}
+
+.menu ul::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.menu ul li {
+  border-right: 1px solid #4dc4f1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  float: left;
+  height: 100%;
+  width: 190px;
+}
+
+.menu ul li:first-child {
+  border-left: 1px solid #4dc4f1;
+}
+
+.menu ul li a {
+  color: #fff;
+  display: block;
+  padding: 16px 0;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.menu ul li a:hover {
+  background-color: #e0eff5;
+  color: #00aaeb;
 }
 
 /*# sourceMappingURL=common.css.map */

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+// inner
+@mixin inner {
+    &--inner {
+        max-width: $max_pc;
+        margin: 0 auto;
+    }
+}
+
+// clearfix
+@mixin clearfix {
+  &::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+}
+
+// margin
+@for $value from 1 through 5 {
+    .mt_#{$value * 5} {
+        margin-top: 5px * $value;
+    }
+    .mb_#{$value * 5} {
+        margin-top: 5px * $value;
+    }
+}

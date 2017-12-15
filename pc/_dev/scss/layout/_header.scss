@@ -3,13 +3,47 @@
 .header {
     @include inner;
     
-    background-color: $color_keyColor;
-    color: $color_white;
-    border: 1px solid #333 {
-        top: 0;
-    }
-    
     p:first-child {
         margin-top: 0;
+    }
+}
+
+.menu {
+    @include inner;
+
+    background-color: $color_keyColor;
+    box-sizing: border-box;
+    
+    ul {
+        @include clearfix;
+
+        margin-top: 0;
+        li {
+            border-right: 1px solid #4dc4f1;
+            box-sizing: border-box;
+            list-style: none;
+            float: left;
+            height: 100%;
+            width: 190px;
+            
+            &:first-child {
+                border-left: 1px solid #4dc4f1;
+            }
+            
+            a {
+                color: $color_white;
+                display: block;
+                padding: 16px 0;
+                text-align: center;
+                text-decoration: none;
+                width: 100%;
+                
+                &:hover {
+                    background-color: #e0eff5;
+                    color: $color_keyColor;
+                }
+                
+            }
+        }
     }
 }
